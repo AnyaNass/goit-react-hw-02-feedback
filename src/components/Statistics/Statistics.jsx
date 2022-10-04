@@ -1,15 +1,11 @@
-export const Statistics = ({ state }) => {
-	return (<>
-		<h2>Statistics:</h2>
-		<ul>
-			{[...Object.values(state)].map(value => {
-				return <li key={getKey()}>{value}</li>
-			})}
-		</ul>
-	</>
+import PropTypes from 'prop-types';
+
+export const StatisticsList = ({ children }) => {
+	return (<ul>{children}</ul>
 	)
 }
 
-function getKey() {
-	return Math.random();
+StatisticsList.propTypes = {
+	children: PropTypes.array.isRequired,
 }
+

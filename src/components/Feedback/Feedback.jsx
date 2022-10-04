@@ -1,6 +1,8 @@
 import React from 'react';
+import { Container } from '../Container/Container'
 import { Buttons } from '../Buttons/Buttons'
-import { Statistics } from '../Statistics/Statistics'
+import { StatHeader } from '../StatHeader/StatHeader'
+import { StatisticsList } from '../Statistics/Statistics'
 
 export const Feedback = class Feedback extends React.Component {
 	state = {
@@ -23,23 +25,17 @@ export const Feedback = class Feedback extends React.Component {
 
 	render() {
 		return (
-			<>
+			<Container>
 				<Buttons state={this.state} onClick={this.handleClick} />
-				<Statistics state={this.state} />
-				<div>
-					{/* <p>{this.state.good}</p>
-
-					<p>{this.state.neutral}</p>
-
-					<p>{this.state.bad}</p> */}
-
-
-					<p>{this.countTotalFeedback()}</p>
-
-					<p>Good percent {this.countPositiveFeedbackPercentage()}</p>
-				</div>
-			</>
+				<StatHeader title="Statistics" />
+				<StatisticsList>
+					<li><span>Good:</span><span>{this.state.good}</span></li>
+					<li><span>Neutral:</span><span>{this.state.neutral}</span></li>
+					<li><span>Bad:</span><span>{this.state.bad}</span></li>
+					<li><span>Total:</span><span>{this.countTotalFeedback()}</span></li>
+					<li><span>Positive feedback:</span><span>{this.countPositiveFeedbackPercentage()}</span></li>
+				</StatisticsList>
+			</Container>
 		)
-
 	}
 }
