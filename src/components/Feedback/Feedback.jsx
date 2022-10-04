@@ -1,8 +1,11 @@
 import React from 'react';
 import { Container } from '../Container/Container'
 import { Buttons } from '../Buttons/Buttons'
-import { StatHeader } from '../StatHeader/StatHeader'
-import { StatisticsList } from '../Statistics/Statistics'
+import { Section } from '../Section/Section'
+import { Statistics } from '../Statistics/Statistics'
+import { FirstPage } from '../FirstPage/FirstPage'
+
+
 
 export const Feedback = class Feedback extends React.Component {
 	state = {
@@ -24,17 +27,20 @@ export const Feedback = class Feedback extends React.Component {
 	}
 
 	render() {
+		const totalFeedback = this.countTotalFeedback();
+
 		return (
 			<Container>
-				<Buttons state={this.state} onClick={this.handleClick} />
-				<StatHeader title="Statistics" />
-				<StatisticsList>
-					<li><span>Good:</span><span>{this.state.good}</span></li>
-					<li><span>Neutral:</span><span>{this.state.neutral}</span></li>
-					<li><span>Bad:</span><span>{this.state.bad}</span></li>
-					<li><span>Total:</span><span>{this.countTotalFeedback()}</span></li>
-					<li><span>Positive feedback:</span><span>{this.countPositiveFeedbackPercentage()}</span></li>
-				</StatisticsList>
+				<Section title="Please, leave your feedback">
+					<Buttons state={this.state} onClick={this.handleClick} />
+				</Section>
+				{totalFeedback === 0
+					?
+					(<FirstPage text="No feedback" />)
+					:
+					(<Section title="Statistics">
+						<Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()} />
+					</Section>)}
 			</Container>
 		)
 	}
