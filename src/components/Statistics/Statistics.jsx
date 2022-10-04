@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
+import { StatisticsList, ListItem, ListItemTitle, FeedbackAmount } from './Statistics.styled'
 
 export const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
-	return (<ul>
-		<li><span>Good:</span><span>{good}</span></li>
-		<li><span>Neutral:</span><span>{neutral}</span></li>
-		<li><span>Bad:</span><span>{bad}</span></li>
-		<li><span>Total:</span><span>{total}</span></li>
-		<li><span>Positive feedback:</span><span>{positivePercentage}%</span></li>
-	</ul>)
+	return (<StatisticsList>
+		<ListItem><ListItemTitle>Good:</ListItemTitle><FeedbackAmount>{good}</FeedbackAmount></ListItem>
+		<ListItem><ListItemTitle>Neutral:</ListItemTitle><FeedbackAmount>{neutral}</FeedbackAmount></ListItem>
+		<ListItem><ListItemTitle>Bad:</ListItemTitle><FeedbackAmount>{bad}</FeedbackAmount></ListItem>
+		<ListItem><ListItemTitle>Total:</ListItemTitle><FeedbackAmount>{total}</FeedbackAmount></ListItem>
+		<ListItem><ListItemTitle>Positive feedback:</ListItemTitle><FeedbackAmount>{positivePercentage}%</FeedbackAmount></ListItem>
+	</StatisticsList>)
 }
 
 Statistics.propTypes = {

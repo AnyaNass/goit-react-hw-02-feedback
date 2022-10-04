@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
 
+import { ButtonList, Button } from './Buttons.styled'
+
 export const Buttons = ({ state, onClick }) => {
-	return (<ul>
+	return (<ButtonList>
 		{[...Object.keys(state)].map(item => {
 			return <li key={item}>
-				<button type="button" name={item} onClick={onClick}>{item}</button>
+				<Button type="button" name={item} onClick={onClick}>{item}</Button>
 			</li>
 		})}
-	</ul>
+	</ButtonList>
 	)
 }
 

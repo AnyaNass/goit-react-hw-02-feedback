@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { Text } from './FirstPage.styled'
 
 export const FirstPage = ({ text }) => {
-	return <p>{text}</p>
+	return <Text>{text}</Text>
 }
 
 FirstPage.propTypes = {
