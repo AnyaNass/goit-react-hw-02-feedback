@@ -15,7 +15,9 @@ export const Feedback = class Feedback extends React.Component {
 	}
 
 	handleClick = (e) => {
-		this.setState((prevState) => ({ [e.target.name]: prevState[e.target.name] + 1 }))
+		const { name } = e.target;
+
+		this.setState((prevState) => ({ [name]: prevState[name] + 1 }))
 	}
 
 	countTotalFeedback = () => {
@@ -28,7 +30,8 @@ export const Feedback = class Feedback extends React.Component {
 
 	render() {
 		const totalFeedback = this.countTotalFeedback();
-
+		const positiveFeedBack = this.countPositiveFeedbackPercentage();
+		const { good, neutral, bad } = this.state;
 		return (
 			<Container>
 				<Section title="Please, leave your feedback">
@@ -39,7 +42,7 @@ export const Feedback = class Feedback extends React.Component {
 					(<FirstPage text="No feedback" />)
 					:
 					(<Section title="Statistics">
-						<Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()} />
+						<Statistics good={good} neutral={neutral} bad={bad} total={totalFeedback} positivePercentage={positiveFeedBack} />
 					</Section>)}
 			</Container>
 		)

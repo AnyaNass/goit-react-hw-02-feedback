@@ -16,7 +16,7 @@ export const Button = styled.button`
 	padding: 8px 0;
 	min-width: 100px;
 	border-radius: 5px;
-	box-shadow: 2px 2px 5px #3b3939;
+	box-shadow: 5px 5px 10px #3b3939;
 	transition: box-shadow 100ms linear;
 	
 	:hover, :focus{
